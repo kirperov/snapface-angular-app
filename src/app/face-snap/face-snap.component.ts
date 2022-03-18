@@ -13,6 +13,7 @@ export class FaceSnapComponent implements OnInit {
   description!: string;
   createdDate!: Date;
   snaps!: number;
+  imageUrl!: string;
   
   // Appelée 1 fois par instance au moment de la création (Initialisation de données en dur mais possible du serveur ou API) 
  /* La méthode  ngOnInit()  est appelée automatiquement par Angular
@@ -23,5 +24,6 @@ export class FaceSnapComponent implements OnInit {
     this.description = "My best friend!";
     this.createdDate = new Date();
     this.snaps = 6;
+    this.imageUrl = "https://cdn.pixabay.com/photo/2015/11/16/22/14/cat-1046544_960_720.jpg";
   }
 }
