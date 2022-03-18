@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, Input, OnInit } from '@angular/core';
+import { FaceSnap } from '../models/face-snap.model';
 // Decorator (brings modifications to the class)
 @Component({
   selector: 'app-face-snap',
@@ -8,11 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 // OnInit implementé la methode
 export class FaceSnapComponent implements OnInit {
+  // Création de propriété avec le type FaceSnap pour qu'il puisse être enjecté de l'exterieur
+  @Input() faceSnap!: FaceSnap;
   // Propriétés por les données
   title!: string;
   description!: string;
   createdDate!: Date;
   snaps!: number;
+  snapped!: boolean;
+  btnText!: string;
   imageUrl!: string;
   
   // Appelée 1 fois par instance au moment de la création (Initialisation de données en dur mais possible du serveur ou API) 
@@ -20,14 +24,19 @@ export class FaceSnapComponent implements OnInit {
   au moment de la création de chaque instance du component. 
   Elle permet notamment d'initialiser des propriétés. */
   ngOnInit() {
-    this.title = 'Archibald';
-    this.description = "My best friend!";
-    this.createdDate = new Date();
-    this.snaps = 6;
-    this.imageUrl = "https://cdn.pixabay.com/photo/2015/11/16/22/14/cat-1046544_960_720.jpg";
+    this.snapped = false;
+    this.btnText = "Oh Snap!";
   }
 
-  onAddSnap() {
-    this.snaps++;
+  onSnap() {
+    if(this.snapped) {
+      this.faceSnap.snaps--;
+      this.snapped = false;
+      this.btnText = "Oh Snap!";
+    } else {
+      this.faceSnap.snaps++;
+      this.snapped = true;
+      this.btnText = "Oops, un Snap!";
+    }
   }
 }
