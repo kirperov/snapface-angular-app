@@ -1,4 +1,2 @@
 <!--  l'attribute binding pour llier mySnap à faceSnap  -->
-<app-face-snap [faceSnap]="mySnap"></app-face-snap>
-<app-face-snap [faceSnap]="mySecondSnap"></app-face-snap>
-<app-face-snap [faceSnap]="myThirdSnap"></app-face-snap>
+<app-face-snap *ngFor="let faceSnap of faceSnaps" [faceSnap]="faceSnap"></app-face-snap>
