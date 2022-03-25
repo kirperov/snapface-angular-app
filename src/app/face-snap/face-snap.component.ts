@@ -16,7 +16,7 @@ export class FaceSnapComponent implements OnInit {
   createdDate!: Date;
   snaps!: number;
   snapped!: boolean;
-  btnText!: string;
+  btnText!: string; 
   imageUrl!: string;
   
   // Appelée 1 fois par instance au moment de la création (Initialisation de données en dur mais possible du serveur ou API) 
